@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
     return render_template('login.html')
 
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory('static', path)
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    root_dir = os.getcwd()
+    return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
 @app.route('/login', methods=['POST'])
 def login():
