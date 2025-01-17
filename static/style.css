@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fce4ec 0%, #e8f5e9 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 440px;
+    padding: 44px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.logo {
+    width: 108px;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1b1b1b;
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    border: 1px solid #e1e1e1;
+    height: 36px;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus {
+    border-color: #0067b8;
+}
+
+button {
+    background-color: #0067b8;
+    color: white;
+    border: none;
+    padding: 8px 32px;
+    float: right;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 2px;
+}
+
+button:hover {
+    background-color: #005da6;
+}
+
+.links {
+    margin-top: 60px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.links a {
+    color: #0067b8;
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.links a:hover {
+    color: #005da6;
+    text-decoration: underline;
+}
+
+/* Alt kısımdaki seçenekler için */
+.signin-options {
+    margin-top: 20px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 440px;
+    text-align: left;
+} 
